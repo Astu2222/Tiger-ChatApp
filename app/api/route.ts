@@ -2,6 +2,7 @@ import { Server } from "socket.io";
 import { createServer } from "http";
 import { NextResponse } from 'next/server';
 
+const port = process.env.PORT || 4000;
 
 const mensajes = ["Bienvenido a Tiger-ChatApp - recuerda que el eslogan de esta app es tu privacidad primero..."] || null;
 const httpServer = createServer();
@@ -12,7 +13,6 @@ const io = new Server(httpServer, {
   },
 });
 
-const port = process.env.PORT || 4000;
 
 
 io.on("connection", (socket) => {

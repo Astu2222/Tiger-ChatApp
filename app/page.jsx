@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { Card, Input, Button } from "@nextui-org/react";
 
-const socket = io("https://tiger-chat-app.vercel.app");
+const socket = io("https://main--tranquil-mousse-c5fe60.netlify.app/api");
 
 export default function Home() {
   const [mensaje, setMensaje] = useState("");
@@ -21,7 +21,7 @@ export default function Home() {
       }
     });
 
-    fetch("https://tiger-chat-app.vercel.app/api")
+    fetch("https://main--tranquil-mousse-c5fe60.netlify.app/api")
       .then((response) => {
         if (response.ok) {
           return response.json();
