@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { Card, Input, Button } from "@nextui-org/react";
@@ -13,10 +13,11 @@ export default function Home() {
   useEffect(() => {
     socket.on("mensaje", (mensaje) => {
       setDatos((prevDatos) => [...prevDatos, mensaje]);
-      
+
       // Asegúrate de que el último mensaje sea siempre visible
       if (mensajesContainerRef.current) {
-        mensajesContainerRef.current.scrollTop = mensajesContainerRef.current.scrollHeight;
+        mensajesContainerRef.current.scrollTop =
+          mensajesContainerRef.current.scrollHeight;
       }
     });
 
@@ -52,20 +53,70 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white">
       <Card style={{ width: "90vw", height: "85vh", margin: "20px" }}>
-        <div className="text-center" style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center" }}>
+        <div
+          className="text-center"
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <img src="/logo.png" style={{ width: "250px" }}></img>
         </div>
-        <div className="mensajes" style={{ maxHeight: "100vh", minHeight: "75vh", width: "100%", overflowY: "auto", backgroundColor: "#FFFFFF" }} >
+        <div
+          className="mensajes"
+          style={{
+            maxHeight: "100vh",
+            minHeight: "75vh",
+            width: "100%",
+            overflowY: "auto",
+            backgroundColor: "#FFFFFF",
+          }}
+        >
           {datos.map((dato, index) => (
-            <Card ref={mensajesContainerRef} style={{ margin: "15px 20px 10px 20px", padding: "10px", display: "block", justifyContent: "center", alignItems: "center", minHeight: "auto", WebkitBoxOrient: "vertical" }} key={index}>
+            <Card
+              ref={mensajesContainerRef}
+              style={{
+                margin: "15px 20px 10px 20px",
+                padding: "10px",
+                display: "block",
+                justifyContent: "center",
+                alignItems: "center",
+                minHeight: "auto",
+                WebkitBoxOrient: "vertical",
+              }}
+              key={index}
+            >
               <p>{dato}</p>
             </Card>
           ))}
         </div>
       </Card>
-      <div className="" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "90vw" }}>
-        <Input className="w-screen" size="lg" type="text" placeholder="Escribe el mensaje aquí..." value={mensaje} onChange={handleChange} />
-        <Button onClick={handleEnviar} color="primary" style={{ margin: "10px" }}>Enviar</Button>
+      <div
+        className=""
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "90vw",
+        }}
+      >
+        <Input
+          className="w-screen"
+          size="lg"
+          type="text"
+          placeholder="Escribe el mensaje aquí..."
+          value={mensaje}
+          onChange={handleChange}
+        />
+        <Button
+          onClick={handleEnviar}
+          color="primary"
+          style={{ margin: "10px" }}
+        >
+          Enviar
+        </Button>
       </div>
     </main>
   );
