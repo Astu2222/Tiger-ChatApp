@@ -12,6 +12,9 @@ const io = new Server(httpServer, {
   },
 });
 
+const port = process.env.PORT || 4000;
+
+
 io.on("connection", (socket) => {
   console.log("Usuario conectado: " + socket.id);
 
@@ -25,7 +28,7 @@ io.on("connection", (socket) => {
   });
 });
 
-httpServer.listen(4000, () => {
+httpServer.listen(port, () => {
   console.log("Servidor de WebSocket en el puerto 4000");
 });
 
