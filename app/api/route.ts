@@ -12,7 +12,7 @@ const io = new Server(httpServer, {
   },
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 
 io.on("connection", (socket) => {
