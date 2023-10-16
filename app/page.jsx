@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import io from "socket.io-client";
 import { Card, Input, Button } from "@nextui-org/react";
 
-const socket = io(`https://tiger-chat-app.vercel.app:4000`);
+const socket = io(`https://tiger-chat-app.vercel.app:${process.env.PORT}`);
 
 export default function Home() {
   const [mensaje, setMensaje] = useState("");
